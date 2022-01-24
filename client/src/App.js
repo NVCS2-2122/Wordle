@@ -17,7 +17,7 @@ function App() {
       <header>
         <h1>Wordle</h1>
       </header>
-      <Board letters={letters} />
+      <Board letters={letters} setLetters={setLetters} />
       <Keyboard letters={letters} />
     </div>
   );
