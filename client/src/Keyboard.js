@@ -1,11 +1,15 @@
 import React from 'react';
 import Key from './Key'
 //rafce
-const Keyboard = () => {
+const Keyboard = ({letters}) => {
   
   return <div>
-      <Key letter="A" color="grey" />
-      <Key letter="B" color="green" />
+      {letters.map(l => 
+        <Key
+            letter={l.letter}
+            color={l.color}
+        />
+      )}
   </div>;
 };
 
