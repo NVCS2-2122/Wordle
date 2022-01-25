@@ -21,7 +21,7 @@ function Row({guess, letters}) {
     </tr>
 }
 
-const Board = ({letters, setLetters}) => {
+const Board = ({letters, setLetters, newLetter}) => {
   const [answer, setAnswer] = useState("REACT")
   const [guesses, setGuesses] = useState(["ROBOT"])
   
@@ -48,6 +48,7 @@ const Board = ({letters, setLetters}) => {
       {guesses.map(guess => <Row guess={guess} letters={letters} />)}
       
       <button onClick={() => {processGuess("REABS")}}>Test</button>
+      <h1>{newLetter}</h1>
   </div>;
 };
 
