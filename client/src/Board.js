@@ -50,8 +50,10 @@ const Board = ({letters, setLetters, newLetter, newGuess, setNewGuess}) => {
   const [answer, setAnswer] = useState("REACT")
   const [guesses, setGuesses] = useState(["ROBOT"])
   const handleEnter = () => {
-      processGuess(newGuess)
-      setNewGuess('')
+    if (newGuess.length == 5) {
+        processGuess(newGuess)
+        setNewGuess('')          
+    }
   }
   const processGuess = (guess) => {
       setGuesses([...guesses,guess])
@@ -75,7 +77,10 @@ const Board = ({letters, setLetters, newLetter, newGuess, setNewGuess}) => {
   return <div>
       {guesses.map(guess => <Row guess={guess} letters={letters} />)}
       <NewRow newGuess={newGuess} />
-      <button onClick={handleEnter}>Enter</button>
+      <button 
+        onClick={handleEnter}
+        disabled={newGuess.length != 5}
+      >Enter</button>
       <h1>{newLetter}</h1>
   </div>;
 };
