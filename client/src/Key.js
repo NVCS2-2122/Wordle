@@ -3,7 +3,9 @@ import React from 'react';
 const Key = ({letter, color, setNewLetter,guess, setNewGuess}) => {
   const onKeyPress = (e) => {
     setNewLetter(letter)
-    setNewGuess(guess+letter)
+    if (guess.length < 5) {
+      setNewGuess(guess+letter)
+    }    
   }
   return <div 
     onClick={onKeyPress}
