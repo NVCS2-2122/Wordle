@@ -21,10 +21,40 @@ function Row({guess, letters}) {
     </tr>
 }
 
-const Board = ({letters, setLetters}) => {
+function NewRow({newGuess}) {
+    const getBlankCells = (num) => {
+        const blankCells = []
+        for (let i = 0; i < num; i++) {
+            blankCells.push(<Cell 
+                letter="?"
+                color="white"
+            />)
+        }
+        return blankCells
+    }
+    return <tr>
+        {newGuess.split('')
+            .map(l => 
+                <Cell 
+                    letter={l} 
+                    color="white" 
+                />)
+        }
+        {
+            getBlankCells(5 - newGuess.length)
+        }
+    </tr>
+}
+
+const Board = ({letters, setLetters, newLetter, newGuess, setNewGuess}) => {
   const [answer, setAnswer] = useState("REACT")
   const [guesses, setGuesses] = useState(["ROBOT"])
-  
+  const handleEnter = () => {
+    if (newGuess.length == 5) {
+        processGuess(newGuess)
+        setNewGuess('')          
+    }
+  }
   const processGuess = (guess) => {
       setGuesses([...guesses,guess])
       guess.split('')
@@ -46,8 +76,12 @@ const Board = ({letters, setLetters}) => {
   }
   return <div>
       {guesses.map(guess => <Row guess={guess} letters={letters} />)}
-      
-      <button onClick={() => {processGuess("REABS")}}>Test</button>
+      <NewRow newGuess={newGuess} />
+      <button 
+        onClick={handleEnter}
+        disabled={newGuess.length != 5}
+      >Enter</button>
+      <h1>{newLetter}</h1>
   </div>;
 };
 
