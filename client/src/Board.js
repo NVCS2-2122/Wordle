@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
 
 function Cell({letter, color}) {
-    return <td style={{backgroundColor: color}}>
+    return <td style={{backgroundColor: color}}
+        className="Cell"
+    >
         {letter}
     </td>
 }
 
 function Row({guess, letters}) {
-    return <tr>
+    return <tr className="Row">
         {guess.split('')
             .map(l => 
                 <Cell 

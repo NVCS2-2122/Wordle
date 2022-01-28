@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import './App.css'
 import Keyboard from './Keyboard'
 import Board from './Board'
 import React, {useState} from 'react'
@@ -14,6 +15,8 @@ function App() {
   const [letters, setLetters] = useState(alphaArr)
   const [newLetter, setNewLetter] = useState('')
   const [newGuess, setNewGuess] = useState('')
+  //username, best score, games beaten, games played
+
   return (
     <div className="App">
       <header>

@@ -3,7 +3,7 @@ import Key from './Key'
 //rafce
 const Keyboard = ({letters, setNewLetter, setNewGuess, guess}) => {
   
-  return <div>
+  return <div className="Keyboard">
       {letters.map(l => 
         <Key
             letter={l.letter}
