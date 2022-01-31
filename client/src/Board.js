@@ -50,11 +50,13 @@ function NewRow({newGuess}) {
 
 const Board = ({letters, setLetters, newLetter, newGuess, setNewGuess}) => {
   const [answer, setAnswer] = useState("REACT")
-  const [guesses, setGuesses] = useState(["ROBOT"])
+  const loadGuesses = JSON.parse(localStorage.getItem("guesses")) || []
+  const [guesses, setGuesses] = useState(loadGuesses)
   const handleEnter = () => {
     if (newGuess.length == 5) {
         processGuess(newGuess)
-        setNewGuess('')          
+        setNewGuess('') 
+        localStorage.setItem("guesses",JSON.stringify([...guesses,newGuess]))         
     }
   }
   const processGuess = (guess) => {
@@ -74,7 +76,8 @@ const Board = ({letters, setLetters, newLetter, newGuess, setNewGuess}) => {
             const index = letters.findIndex(letterData => letterData.letter == l)
             letters[index].color = color
         })
-      setLetters([...letters])      
+      setLetters([...letters])
+      localStorage.setItem("letters",JSON.stringify(letters))      
   }
   return <div>
       {guesses.map(guess => <Row guess={guess} letters={letters} />)}

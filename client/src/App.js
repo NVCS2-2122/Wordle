@@ -12,7 +12,8 @@ function App() {
       letter: l,
       color: "lightgrey"
     }))
-  const [letters, setLetters] = useState(alphaArr)
+  const loadLetters = JSON.parse(localStorage.getItem("letters")) || alphaArr
+  const [letters, setLetters] = useState(loadLetters)
   const [newLetter, setNewLetter] = useState('')
   const [newGuess, setNewGuess] = useState('')
   //username, best score, games beaten, games played
