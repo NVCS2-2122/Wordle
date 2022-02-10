@@ -1,6 +1,8 @@
 const express = require('express')
 const app = new express()
 
+app.use(express.static("/client/build"))
+app.use(express.json())
 //GET playerStats, solution, acceptableWords, guesses, userInfo 
 //POST wonGame, guesses, numGuesses, userInfo
 

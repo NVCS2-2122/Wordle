@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 const Login = () => {
     const [isLoggedIn, setLoggedIn] = useState(false)
@@ -7,7 +7,9 @@ const Login = () => {
     const handleSubmit = () => {
         const config = {
             "method":"POST",
-            "Content-Type":"application/json",
+            "headers":{
+               "Content-Type":"application/json" 
+            },
             "body":JSON.stringify({
                 username,
                 password
@@ -17,18 +19,24 @@ const Login = () => {
     }
   return (
     <div>
-        <label for='username'>
+        <label htmlFor='username'>
             Username:
         </label>
         <input 
+            onChange={(e) => {
+                setUsername(e.target.value)
+            }}
             type="text"
             placeholder='username'
             name='username'
         />
-        <label for='password'>
+        <label htmlFor='password'>
             Password:
         </label>
         <input 
+            onChange={(e) => {
+                setPassword(e.target.value)
+            }}
             type="password"
             placeholder='password'
             name='password'
