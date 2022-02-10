@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 function Cell({letter, color}) {
     return <td style={{backgroundColor: color}}
@@ -49,7 +49,14 @@ function NewRow({newGuess}) {
 }
 
 const Board = ({letters, setLetters, newLetter, newGuess, setNewGuess}) => {
-  const [answer, setAnswer] = useState("REACT")
+  const [answer, setAnswer] = useState("")
+  useEffect(() => {
+      fetch("/game")
+        .then(res => res.json())
+        .then(data => {
+            setAnswer(data.answer)
+        })
+  },[])
   const loadGuesses = JSON.parse(localStorage.getItem("guesses")) || []
   const [guesses, setGuesses] = useState(loadGuesses)
   const handleEnter = () => {

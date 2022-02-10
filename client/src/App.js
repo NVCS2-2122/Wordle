@@ -3,6 +3,7 @@ import './App.css'
 import Keyboard from './Keyboard'
 import Board from './Board'
 import React, {useState} from 'react'
+import Login from './Login'
 
 function App() {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -23,6 +24,7 @@ function App() {
       <header>
         <h1>Wordle</h1>
       </header>
+      <Login />
       <Board letters={letters} setLetters={setLetters} newLetter={newLetter} newGuess={newGuess} setNewGuess={setNewGuess} />
       <Keyboard letters={letters} setNewLetter={setNewLetter} setNewGuess={setNewGuess} guess={newGuess} />
     </div>
