@@ -8,9 +8,17 @@ app.get("/login",(req,res) => {
     res.send("nope")
 })
 
-app.get("/game")
+app.get("/game",(req, res) => {
+    const answers = ["ELDER","REACT","KNOLL"]
+    const randIndex = Math.floor(Math.random() * answers.length)
+    const answer = answers[randIndex]
+    res.json({answer})
+})
 
-app.post("/register")
+app.post("/register",(req,res) => {
+    const {username, password} = req.body
+    console.log(username, password)
+})
 
 app.post("/result")
 

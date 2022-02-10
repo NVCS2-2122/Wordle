@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/NVCS2-2122/Wordle/issues"
   },
-  "homepage": "https://github.com/NVCS2-2122/Wordle#readme"
+  "homepage": "https://github.com/NVCS2-2122/Wordle#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
 }
