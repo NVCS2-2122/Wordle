@@ -54,7 +54,7 @@ const Board = ({letters, setLetters, newLetter, newGuess, setNewGuess}) => {
       fetch("/game")
         .then(res => res.json())
         .then(data => {
-            setAnswer(data.answer)
+            setAnswer(data.answer.word)
         })
   },[])
   const loadGuesses = JSON.parse(localStorage.getItem("guesses")) || []

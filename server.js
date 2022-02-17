@@ -1,5 +1,6 @@
 const express = require('express')
 const app = new express()
+const db = require('better-sqlite3')('Wordle.db')
 
 app.use(express.static("/client/build"))
 app.use(express.json())
@@ -11,7 +12,9 @@ app.get("/login",(req,res) => {
 })
 
 app.get("/game",(req, res) => {
-    const answers = ["ELDER","REACT","KNOLL"]
+    const sql = db.prepare('SELECT * FROM words')
+    const answers = sql.all()
+    //const answers = ["ELDER","REACT","KNOLL"]
     const randIndex = Math.floor(Math.random() * answers.length)
     const answer = answers[randIndex]
     res.json({answer})
@@ -20,6 +23,9 @@ app.get("/game",(req, res) => {
 app.post("/register",(req,res) => {
     const {username, password} = req.body
     console.log(username, password)
+    const sql = db.prepare('INSERT INTO users (username, password) VALUES (?,?)')
+    const result = sql.run(username, password)
+    console.log(result.lastInsertRowid)
 })
 
 app.post("/result")

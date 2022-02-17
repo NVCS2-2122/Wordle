@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/NVCS2-2122/Wordle#readme",
   "dependencies": {
+    "better-sqlite3": "^7.5.0",
     "express": "^4.17.2"
   }
 }
